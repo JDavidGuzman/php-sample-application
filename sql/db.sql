@@ -1,3 +1,6 @@
+CREATE DATABASE sample;
+USE sample;
+
 DROP FUNCTION IF EXISTS `ordered_uuid`;
 
 DROP TABLE IF EXISTS `tweet`;
@@ -34,6 +37,11 @@ CREATE TABLE `tweet` (
   INDEX (`user_id`, `ts`),
   FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
+
+CREATE USER sampleuser;
+GRANT SELECT ON sample.tweet TO sampleuser;
+GRANT SELECT ON sample.user TO sampleuser;
+SET PASSWORD FOR sampleuser = PASSWORD('samplepass');
 
 CREATE TRIGGER before_insert_tweet
   BEFORE INSERT ON `tweet`

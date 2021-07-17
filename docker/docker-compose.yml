@@ -1,0 +1,15 @@
+version: "3"
+services:
+
+  sample_sql:
+    image: sample_sql_php:jdg-test
+    container_name: sample_sql
+  #  build:
+  #    context: ../sql
+    networks:
+    - sample
+    environment:
+    - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+
+networks:
+  sample:
