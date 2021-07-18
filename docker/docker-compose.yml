@@ -2,14 +2,22 @@ version: "3"
 services:
 
   sample_sql:
-    image: sample_sql_php:jdg-test
+    image: jdavidguzman/cloux-php-sample:sql
     container_name: sample_sql
-  #  build:
-  #    context: ../sql
     networks:
     - sample
     environment:
     - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+
+  sample_php:
+    image: jdavidguzman/cloux-php-sample:app
+    container_name: sample_app
+    ports:
+    - '8080:80'
+    networks:
+    - sample
+    depends_on: 
+    - sample_sql
 
 networks:
   sample:
