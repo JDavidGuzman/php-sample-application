@@ -1,0 +1,15 @@
+version: "3"
+services:
+
+  sample_sql:
+    image: sample_app_php:jdg-test
+    container_name: sample_app
+  #  build:
+  #    context: ../sql
+    ports:
+    - '8080:80'
+    networks:
+    - sample
+
+networks:
+  sample:

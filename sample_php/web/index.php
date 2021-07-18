@@ -1,5 +1,8 @@
 <?php
 
+require "autoloader.php";
+require "bootstrap.php";
+
 $lastJoinedUsers = (require "dic/users.php")->getLastJoined();
 
 switch (require "dic/negotiated_format.php") {
